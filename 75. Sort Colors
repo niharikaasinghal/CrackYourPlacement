@@ -1,0 +1,31 @@
+class Solution {
+public:
+    void sortColors(vector<int>& nums) {
+        //naive approach- can use any sorting algo. eg- merge sort but uses aux space
+        //better approach- maintaining 3 count variables which count 0,1,2 and then acc to count we can simply print but it uses 2n complexity.
+        //optimized approach - dutch national flag algo
+        int n=nums.size();
+        int low=0, mid=0, high=n-1;
+        while(mid<=high)
+        {
+            if(nums[mid]==0)
+            {
+                nums[mid]=nums[low];
+                nums[low]=0;
+                low++;
+                mid++;
+            }
+            else if(nums[mid]==1)
+            {
+                mid++;
+            }
+            else
+            {
+                nums[mid]=nums[high];
+                nums[high]=2;
+                high--;
+            }
+        }
+
+    }
+};
