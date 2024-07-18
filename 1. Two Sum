@@ -1,0 +1,21 @@
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        //brute force- use 2 for loops and check each element
+        //better-using map and calc the diff bw target and nums[i] and then finding the value in the map
+        //optimized-using 2 pointers one at starting and one at end, if sum>target j--, is sum<target i++
+        unordered_map<int,int>mp;
+        int n=nums.size();
+        for(int i=0;i<n;i++)
+        {
+            mp[nums[i]]=i;
+        }
+        for(int i=0;i<n;i++)
+        {
+            int complement=target-nums[i];
+            if(mp.count(complement) && mp[complement]!=i)
+            return {i,mp[complement]};
+        }
+        return {};
+    }
+};
